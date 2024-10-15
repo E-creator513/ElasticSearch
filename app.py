@@ -5,9 +5,9 @@ import json
 app = Flask(__name__)
 es = Elasticsearch("http://localhost:9201", http_auth=('elastic', 'JyzOSl9yte-f7PgXTk+v'))
 
-# Load data from mocks.json into Elasticsearch
+# data from mocks.json into Elasticsearch
 def load_initial_data():
-    # Make sure to run this function only once to avoid duplicating documents
+    # zvaks avoid only once to avoid duplicating documents
     if es.indices.exists(index='codex-10-14-2024'):
         print("Index already exists. Skipping data load.")
         return
@@ -18,7 +18,7 @@ def load_initial_data():
             es.index(index='codex-10-14-2024', body=item)
     print("Initial data loaded successfully.")
 
-# Serve the HTML page
+# Serve the HTML page or my landing page
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -77,7 +77,7 @@ def search():
 
     return jsonify({"documents": documents})
 
-# Patch a document
+# Patching a document and apa ,ake sure kuti id is the same as the one yandaisa in ES DATA node
 @app.route('/document', methods=['PATCH'])
 def patch_document():
     document_id = request.json.get('documentId')
@@ -94,7 +94,7 @@ def patch_document():
     }), 200
 
 if __name__ == '__main__':
-    # Load initial data from mocks.json if you haven't already done so
+    # Loading  initial data from mocks.json if haven't already done so
     load_initial_data()
     
     app.run(debug=True)
