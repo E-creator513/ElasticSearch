@@ -45,3 +45,6 @@ After you are certain the network is health you should start the flask app frame
 python app.py
 ```
 This app will automatically connect to the ES Single-cluster using the credentials aforementioned already inside 
+
+##Interaction
+
