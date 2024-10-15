@@ -149,3 +149,129 @@ Avoid randomly using an unknown id ,i have made sure ES automatically generates 
 curl -X POST "http://localhost:5000/document" -H "Content-Type: application/json" -d @data.json
 ```
 
+## Optional:Listing all documents or data injected in the node 
+```bash
+User@WINDOWS-HGAHPUU MINGW64 ~/downloads/backend (main)
+$ curl -X GET "http://localhost:9201/codex-10-14-2024/_search?pretty" --user elastic:JyzOSl9yte-f7PgXTk+v -H "Content-Type: application/json" -d'
+{
+  "query": {
+    "match_all": {}
+  }
+}'
+```
+You should be getting a result like 
+```bash
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  3590  100  3549  100    41   1866     21  0:00:01  0:00:01 --:--:--  1887{
+  "took" : 371,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 161,
+      "relation" : "eq"
+    },
+    "max_score" : 1.0,
+    "hits" : [
+      {
+        "_index" : "codex-10-14-2024",
+        "_id" : "2",
+        "_score" : 1.0,
+        "_source" : {
+          "title" : "Provide custom configuration",
+          "content" : "You can allow users to customize a tool, like setting a placeholder for an input field using the config property. It is also advisable to use the I18n API for localization of UI texts."
+        }
+      },
+      {
+        "_index" : "codex-10-14-2024",
+        "_id" : "3",
+        "_score" : 1.0,
+        "_source" : {
+          "title" : "Paste substitutions",
+          "content" : "Tools API allows you to substitute pasted HTML tags, files and string patterns. To make it work you need just two things: static getter pasteConfig and onPaste method"
+        }
+      },
+      {
+        "_index" : "codex-10-14-2024",
+        "_id" : "4",
+        "_score" : 1.0,
+        "_source" : {
+          "title" : "Saving data",
+          "content" : "To get all entry's data from Editor.js, call the save() method on the class instance. It will return a Promise that resolves with clean data."
+        }
+      },
+      {
+        "_index" : "codex-10-14-2024",
+        "_id" : "5",
+        "_score" : 1.0,
+        "_source" : {
+          "title" : "Enable Inline Toolbar",
+          "content" : "To activate or not to activate the Inline Formatting Toolbar â€” is the decision of your Tools' user. So this options configured outside the source of Tool's code."
+        }
+      },
+      {
+        "_index" : "codex-10-14-2024",
+        "_id" : "6",
+        "_score" : 1.0,
+        "_source" : {
+          "title" : "Caret Module",
+          "content" : "Provides methods for working with the Caret class. These include setting the caret to various block positions such as first, last, previous, and next blocks."
+        }
+      },
+      {
+        "_index" : "codex-10-14-2024",
+        "_id" : "7",
+        "_score" : 1.0,
+        "_source" : {
+          "title" : "setToFirstBlock",
+          "content" : "Sets the caret to the first block (index = 0). The method takes position ('start' or 'end') and an offset parameter."
+        }
+      },
+      {
+        "_index" : "codex-10-14-2024",
+        "_id" : "8",
+        "_score" : 1.0,
+        "_source" : {
+          "title" : "setToLastBlock",
+          "content" : "Sets the caret to the last block (index = length - 1). Position and offset are configurable."
+        }
+      },
+      {
+        "_index" : "codex-10-14-2024",
+        "_id" : "9",
+        "_score" : 1.0,
+        "_source" : {
+          "title" : "setToPreviousBlock",
+          "content" : "Sets the caret to the previous block. Position and offset parameters are optional."
+        }
+      },
+      {
+        "_index" : "codex-10-14-2024",
+        "_id" : "10",
+        "_score" : 1.0,
+        "_source" : {
+          "title" : "setToNextBlock",
+          "content" : "Sets the caret to the next block. Takes position ('start' or 'end') and offset as parameters."
+        }
+      },
+      {
+        "_index" : "codex-10-14-2024",
+        "_id" : "11",
+        "_score" : 1.0,
+        "_source" : {
+          "title" : "setToBlock",
+          "content" : "Sets the caret to a specific block by index. Takes block index, position, and offset as parameters."
+        }
+      }
+    ]
+  }
+}
+
+
+```
