@@ -46,5 +46,7 @@ python app.py
 ```
 This app will automatically connect to the ES Single-cluster using the credentials aforementioned already inside 
 
-##Interaction
-
+## Interaction
+There are two ways to interact with this database ,through the index on address http://127.0.0.1:5000 with a landing page like this 
+![image](https://github.com/user-attachments/assets/0b5f0dfe-5a08-4b59-b492-b6e05e90aca2)
+Or through the git-bash terminal with these commands 
