@@ -11,8 +11,10 @@ $ git clone https://github.com/E-creator513/ElasticSearch.git
 ```
 ##  ElasticSearch Activation
 
-You can navigate to the Dockerfiles to start a single-node Elasticsearch cluster
+You can navigate to the Dockerfiles to start the single-node Elasticsearch cluster
 
 ```bash
 $ docker-compose up --build
 ```
+
+I have already added the mock data in the data-node but just in case you have new data(with arrays of objects),first run the file convert.py and name it mocks_es_format.json
