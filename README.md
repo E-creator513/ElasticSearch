@@ -117,3 +117,25 @@ you should be getting the result like
   ]
 }
 ```
+### Patch
+To update an existing document using its Id, use the PATCH method.
+ 
+```bash
+$ curl -X PATCH http://localhost:5000/document -H "Content-Type: application/json" -d '{
+    "documentId": "1",
+    "document": {
+        "title": "Updated Title",
+        "content": "Updated content for the document."
+    }
+}'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   259  100   120  100   139    439    508 --:--:-- --:--:-- --:--:--   945{
+  "document": {
+    "content": "Updated content for the document.",
+    "id": "1",
+    "title": "Updated Title"
+  }
+}
+```
+Avoid randomly using an unknown id ,i have made sure ES automatically generates them also
