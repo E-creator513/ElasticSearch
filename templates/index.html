@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Main container */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Left side with blue background */
+        .left-half {
+            position: absolute;
+            left: 0;
+            width: 50%;
+            height: 400%;
+            background-color: #022cff;
+        }
+
+        /* Right side with orange background */
+        .right-half {
+            position: absolute;
+            right: 0;
+            width: 50%;
+            height: 400%;
+            background-color: #ff5f02;
+        }
+
+        /* Center box for functionalities */
+        .center-box {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 600px;
+            position: relative;
+            z-index: 1;
+			margin-top: 50px;
+        }
+
+        /* Inputs and button styling */
+        input[type="text"], textarea {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #022cff;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff5f02;
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+        }
+
+        .document {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: left;
+        }
+
+        .function-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Left half of the page -->
+        <div class="left-half"></div>
+
+        <!-- Right half of the page -->
+        <div class="right-half"></div>
+
+        <!-- Centered Box -->
+        <div class="center-box">
+            <h1>Document Management</h1>
+            
+            <!-- Search Functionality -->
+            <div class="function-container">
+                <h2>Search Documents</h2>
+                <input type="text" id="searchQuery" placeholder="Enter your search term">
+                <button onclick="searchDocuments()">Search</button>
+            </div>
+
+            <!-- Create Document Functionality -->
+            <div class="function-container">
+                <h2>Create Document</h2>
+                <input type="text" id="newTitle" placeholder="Title">
+                <textarea id="newContent" placeholder="Content"></textarea>
+            </div>
+            <button onclick="createDocument()">Create</button>
+
+            <!-- Edit Document Functionality -->
+            <div class="function-container">
+                <h2>Edit Document</h2>
+                <input type="text" id="editDocId" placeholder="Document ID">
+                <input type="text" id="editTitle" placeholder="New Title">
+                <textarea id="editContent" placeholder="New Content"></textarea>
+            </div>
+            <button onclick="editDocument()">Edit</button>
+
+            <h2>Results:</h2>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        // Search Documents Function
+        async function searchDocuments() {
+            const queryString = document.getElementById('searchQuery').value;
+            const response = await fetch(`/search?querystring=${queryString}`);
+            const data = await response.json();
+            displayResults(data.documents);
+        }
+
+        // Display search results
+        function displayResults(documents) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = ''; // Clear previous results
+
+            if (documents.length === 0) {
+                resultsDiv.innerHTML = '<p>No documents found.</p>';
+                return;
+            }
+
+            documents.forEach(doc => {
+                const docDiv = document.createElement('div');
+                docDiv.className = 'document';
+                
+                const fieldName = document.createElement('h3');
+                fieldName.textContent = `Field Name: ${doc.fieldName}`;
+                
+                const fieldContent = document.createElement('p');
+                fieldContent.textContent = `Content: ${decodeURIComponent(escape(doc.fieldContent))}`;
+
+                const docId = document.createElement('p');
+                docId.textContent = `ID: ${doc.id}`;
+                
+                docDiv.appendChild(fieldName);
+                docDiv.appendChild(fieldContent);
+                docDiv.appendChild(docId);
+
+                resultsDiv.appendChild(docDiv);
+            });
+        }
+
+        // Create Document Function
+        async function createDocument() {
+            const title = document.getElementById('newTitle').value;
+            const content = document.getElementById('newContent').value;
+
+            const response = await fetch('/document', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ document: { title, content } })
+            });
+
+            const data = await response.json();
+            alert(`Document created with ID: ${data.document.id}`);
+        }
+
+        // Edit Document Function
+        async function editDocument() {
+            const documentId = document.getElementById('editDocId').value;
+            const title = document.getElementById('editTitle').value;
+            const content = document.getElementById('editContent').value;
+
+            const response = await fetch('/document', {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ documentId, document: { title, content } })
+            });
+
+            const data = await response.json();
+            alert(`Document with ID ${data.document.id} updated successfully`);
+        }
+    </script>
+</body>
+</html>

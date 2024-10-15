@@ -1,0 +1,78 @@
+{"index": {"_index": "your_index_name", "_id": "1"}}
+{"title": "Basics", "content": "Inline tools in Editor.js interact with selected text via Range objects and require a button to appear in the toolbar. You need to define methods like render, surround, and checkState to implement an inline tool."}
+{"index": {"_index": "your_index_name", "_id": "2"}}
+{"title": "Provide custom configuration", "content": "You can allow users to customize a tool, like setting a placeholder for an input field using the config property. It is also advisable to use the I18n API for localization of UI texts."}
+{"index": {"_index": "your_index_name", "_id": "3"}}
+{"title": "Paste substitutions", "content": "Tools API allows you to substitute pasted HTML tags, files and string patterns. To make it work you need just two things: static getter pasteConfig and onPaste method"}
+{"index": {"_index": "your_index_name", "_id": "4"}}
+{"title": "Saving data", "content": "To get all entry's data from Editor.js, call the save() method on the class instance. It will return a Promise that resolves with clean data."}
+{"index": {"_index": "your_index_name", "_id": "5"}}
+{"title": "Enable Inline Toolbar", "content": "To activate or not to activate the Inline Formatting Toolbar \u00e2\u20ac\u201d is the decision of your Tools' user. So this options configured outside the source of Tool's code."}
+{"index": {"_index": "your_index_name", "_id": "6"}}
+{"title": "Caret Module", "content": "Provides methods for working with the Caret class. These include setting the caret to various block positions such as first, last, previous, and next blocks."}
+{"index": {"_index": "your_index_name", "_id": "7"}}
+{"title": "setToFirstBlock", "content": "Sets the caret to the first block (index = 0). The method takes position ('start' or 'end') and an offset parameter."}
+{"index": {"_index": "your_index_name", "_id": "8"}}
+{"title": "setToLastBlock", "content": "Sets the caret to the last block (index = length - 1). Position and offset are configurable."}
+{"index": {"_index": "your_index_name", "_id": "9"}}
+{"title": "setToPreviousBlock", "content": "Sets the caret to the previous block. Position and offset parameters are optional."}
+{"index": {"_index": "your_index_name", "_id": "10"}}
+{"title": "setToNextBlock", "content": "Sets the caret to the next block. Takes position ('start' or 'end') and offset as parameters."}
+{"index": {"_index": "your_index_name", "_id": "11"}}
+{"title": "setToBlock", "content": "Sets the caret to a specific block by index. Takes block index, position, and offset as parameters."}
+{"index": {"_index": "your_index_name", "_id": "12"}}
+{"title": "focus", "content": "Sets the caret focus to the editor, with the option to place it at the end of the first block."}
+{"index": {"_index": "your_index_name", "_id": "13"}}
+{"title": "I18n API", "content": "Provides methods for Internationalization that can be used in plugins."}
+{"index": {"_index": "your_index_name", "_id": "14"}}
+{"title": "t(dictKey: string)", "content": "Performs translation of the passed string based on the i18n dictionary. It automatically adds namespaces like 'tools.${toolName}' or 'blockTunes.${tuneName}'."}
+{"index": {"_index": "your_index_name", "_id": "15"}}
+{"title": "Parameters", "content": "Takes a string to translate, which is the key from the i18n dictionary under the corresponding section."}
+{"index": {"_index": "your_index_name", "_id": "16"}}
+{"title": "Return value", "content": "Returns the translated string, which is the value from the i18n dictionary."}
+{"index": {"_index": "your_index_name", "_id": "17"}}
+{"title": "Example for Block and Inline Tools", "content": "Shows how to use the API in a plugin with custom i18n dictionary for tools like image upload."}
+{"index": {"_index": "your_index_name", "_id": "18"}}
+{"title": "Example for Block Tunes", "content": "Shows how to use the API in block tunes with a custom i18n dictionary for items like spoiler content."}
+{"index": {"_index": "your_index_name", "_id": "19"}}
+{"title": "Block Tunes API", "content": "Block Tunes allow you to set additional options to Blocks, like marking a block as a spoiler, adding anchors, setting backgrounds, etc."}
+{"index": {"_index": "your_index_name", "_id": "20"}}
+{"title": "Constructor", "content": "Block Tune constructor accepts properties such as `api`, `data`, `config`, and `block` (the Block API object related to the tune)."}
+{"index": {"_index": "your_index_name", "_id": "21"}}
+{"title": "Public Methods", "content": "Includes methods like `render` (required for rendering the tune inside the menu), `save` (optional for saving tune state), and `wrap` (optional for wrapping block content)."}
+{"index": {"_index": "your_index_name", "_id": "22"}}
+{"title": "Static Methods and Properties", "content": "Defines required `isTune` property and optional methods like `prepare` (for initializing) and `reset` (for cleanup)."}
+{"index": {"_index": "your_index_name", "_id": "23"}}
+{"title": "render()", "content": "This method defines how the tune is displayed inside the Block Tunes menu. It returns either a `MenuConfig` or a custom button element."}
+{"index": {"_index": "your_index_name", "_id": "24"}}
+{"title": "save()", "content": "Method to save the state of the tune, returning any necessary data."}
+{"index": {"_index": "your_index_name", "_id": "25"}}
+{"title": "wrap()", "content": "Allows you to wrap the Block's content to modify its styles. Returns an HTML element."}
+{"index": {"_index": "your_index_name", "_id": "26"}}
+{"title": "static get isTune()", "content": "Marks the Tool as a Block Tune by returning `true`."}
+{"index": {"_index": "your_index_name", "_id": "27"}}
+{"title": "static prepare()", "content": "Prepares tune resources like external scripts or styles. Returns `void` or a Promise."}
+{"index": {"_index": "your_index_name", "_id": "28"}}
+{"title": "static reset()", "content": "Resets the tune state when the Editor is destroyed. Returns `void` or a Promise."}
+{"index": {"_index": "your_index_name", "_id": "29"}}
+{"title": "Destroyer", "content": "You can destroy an Editor.js instance by calling the `destroy` method."}
+{"index": {"_index": "your_index_name", "_id": "30"}}
+{"title": "Internationalization", "content": "Since version 2.18, Editor.js provides an API for internationalization (i18n) that allows localizing all UI texts of the editor's core and plugins."}
+{"index": {"_index": "your_index_name", "_id": "31"}}
+{"title": "Localization Configuration", "content": "To enable localization, pass a `messages` dictionary with the `i18n` option in the Editor Config. The dictionary should have four sections: `ui`, `toolNames`, `tools`, and `blockTunes`."}
+{"index": {"_index": "your_index_name", "_id": "32"}}
+{"title": "Fill Block with saved data", "content": "In the previous guide, we learned how to create a basic Tool class with minimal required methods. In this part, we consider how to render previously saved data."}
+{"index": {"_index": "your_index_name", "_id": "33"}}
+{"title": "Accepting saved data", "content": "When editing a previously saved article, Editor.js retrieves saved data using the `data` property. It then renders blocks one-by-one and passes them their saved data."}
+{"index": {"_index": "your_index_name", "_id": "34"}}
+{"title": "Using saved data in the constructor", "content": "Data is passed to the Tool's constructor, allowing you to store it in a property like `this.data` for use in methods such as `render`."}
+{"index": {"_index": "your_index_name", "_id": "35"}}
+{"title": "Improving the render", "content": "To enhance the UI, we can add a wrapper element and style the tool. Also, modify the `save` method to reference the input element within the wrapper."}
+{"index": {"_index": "your_index_name", "_id": "36"}}
+{"title": "Access Editor's API", "content": "In the previous chapter, we discussed the \u00c2\u00abStretch Block\u00c2\u00bb tune, which makes a Block's content fill the entire width of the Editor. Editor.js provides a simple API method for this: `block.stretchBlock`."}
+{"index": {"_index": "your_index_name", "_id": "37"}}
+{"title": "Introduction to the API", "content": "In this guide, we will learn how to interact with the Editor.js API."}
+{"index": {"_index": "your_index_name", "_id": "38"}}
+{"title": "Calling the API", "content": "The Editor passes an API object to the Tool's constructor via the `api` parameter. You can store it in a property like `this.api`, which is accessible from any method."}
+{"index": {"_index": "your_index_name", "_id": "39"}}
+{"title": "BlockAPI Overview", "content": "BlockAPI provides methods and properties for working with Block instances. You can access the BlockAPI object inside a Tool or use the `getBlockByIndex` method."}
