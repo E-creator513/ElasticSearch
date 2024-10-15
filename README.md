@@ -10,3 +10,9 @@ To clone the project, run the following command:
 $ git clone https://github.com/E-creator513/ElasticSearch.git
 ```
 ##  ElasticSearch Activation
+
+You can navigate to the Dockerfiles to start a single-node Elasticsearch cluster
+
+```bash
+$ docker-compose up --build
+```
