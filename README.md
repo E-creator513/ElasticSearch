@@ -49,4 +49,71 @@ This app will automatically connect to the ES Single-cluster using the credentia
 ## Interaction
 There are two ways to interact with this database ,through the index on address http://127.0.0.1:5000 with a landing page like this 
 ![image](https://github.com/user-attachments/assets/0b5f0dfe-5a08-4b59-b492-b6e05e90aca2)
-Or through the git-bash terminal with these commands 
+## Terminal
+Through the git-bash terminal with these commands 
+### Searching 
+
+for example the word Editor.js
+```bash
+curl -X GET "http://localhost:5000/search?querystring=Editor.js" -H "Content-Type: application/json"
+```
+you should be getting the result like 
+
+```bash
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1856  100  1856    0     0   6642      0 --:--:-- --:--:-- --:--:--  6652{
+  "documents": [
+    {
+      "fieldContent": "You can destroy an Editor.js instance by calling the `destroy` method.",
+      "fieldName": "content",
+      "id": "29"
+    },
+    {
+      "fieldContent": "You can destroy an Editor.js instance by calling the `destroy` method.",
+      "fieldName": "content",
+      "id": "hmtni5IB-CXDxQLHAUBM"
+    },
+    {
+      "fieldContent": "You can destroy an Editor.js instance by calling the `destroy` method.",
+      "fieldName": "content",
+      "id": "rmtxi5IB-CXDxQLHgEBl"
+    },
+    {
+      "fieldContent": "You can destroy an Editor.js instance by calling the `destroy` method.",
+      "fieldName": "content",
+      "id": "1Wtzi5IB-CXDxQLH6EDn"
+    },
+    {
+      "fieldContent": "In this guide, we will learn how to interact with the Editor.js API.",
+      "fieldName": "content",
+      "id": "37"
+    },
+    {
+      "fieldContent": "In this guide, we will learn how to interact with the Editor.js API.",
+      "fieldName": "content",
+      "id": "jmtni5IB-CXDxQLHAkD1"
+    },
+    {
+      "fieldContent": "In this guide, we will learn how to interact with the Editor.js API.",
+      "fieldName": "content",
+      "id": "tmtxi5IB-CXDxQLHgkCw"
+    },
+    {
+      "fieldContent": "In this guide, we will learn how to interact with the Editor.js API.",
+      "fieldName": "content",
+      "id": "3Wtzi5IB-CXDxQLH6kBA"
+    },
+    {
+      "fieldContent": "Since version 2.18, Editor.js provides an API for internationalization (i18n) that allows localizing all UI texts of the editor's core and plugins.",
+      "fieldName": "content",
+      "id": "30"
+    },
+    {
+      "fieldContent": "Since version 2.18, Editor.js provides an API for internationalization (i18n) that allows localizing all UI texts of the editor's core and plugins.",
+      "fieldName": "content",
+      "id": "h2tni5IB-CXDxQLHAUB1"
+    }
+  ]
+}
+```
