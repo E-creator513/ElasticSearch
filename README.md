@@ -139,3 +139,9 @@ $ curl -X PATCH http://localhost:5000/document -H "Content-Type: application/jso
 }
 ```
 Avoid randomly using an unknown id ,i have made sure ES automatically generates them also
+
+### Creating a document also
+```bash
+curl -X POST "http://localhost:5000/document" -H "Content-Type: application/json" -d @data.json
+```
+
