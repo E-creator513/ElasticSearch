@@ -42,7 +42,7 @@ After the docker-compose is up you should check the health status in the termina
 After you are certain the network is health you should start the flask app framework 
 
  ```bash
-python app.py
+python app1.py
 ```
 This app will automatically connect to the ES Single-cluster using the credentials aforementioned already inside 
 
